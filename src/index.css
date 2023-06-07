@@ -1,4 +1,7 @@
-@import-normalize; /* bring in normalize.css styles */
+:root {
+  --light-clr-1: #f1ed9e;
+  --dark-clr-1: #262626;
+}
 
 body {
   margin: 0;
@@ -7,6 +10,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  color: var(--dark-clr-1);
+  background-color: var(--light-clr-1);
 }
 
 code {
