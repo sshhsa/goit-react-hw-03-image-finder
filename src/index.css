@@ -1,6 +1,9 @@
 :root {
-  --light-clr-1: #f1ed9e;
-  --dark-clr-1: #262626;
+  --light-clr-1: #fffee1;
+  --light-clr-2: #f1ed9e;
+
+  --dark-clr-1: rgba(0, 0, 0, 0.5);
+  --dark-clr-2: #262626;
 }
 
 body {
