@@ -1,10 +1,15 @@
-// import PropTypes from 'prop-types';
+import ImageGalleryItem from './ImageGalleryItem';
 import css from './Style.module.css';
 
-function ImageGallery() {
-  return <ul className={css.gallery}></ul>;
+function ImageGallery({ images }) {
+  const imageArray = Object.values(images);
+  return (
+    <ul className={css.galleryList}>
+      {imageArray.map(image => (
+        <ImageGalleryItem key={image.id} image={image} />
+      ))}
+    </ul>
+  );
 }
-
-// ImageGallery.propTypes = {}
 
 export default ImageGallery;

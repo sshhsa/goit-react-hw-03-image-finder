@@ -32,6 +32,7 @@ function Searchbar() {
           </button>
 
           <Field
+            style={{ border: 'none' }}
             className={css.inputSearch}
             name="images"
             type="text"

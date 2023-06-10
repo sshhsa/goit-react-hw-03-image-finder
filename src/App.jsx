@@ -8,11 +8,30 @@ import ButtonLoadMore from 'components/Button';
 
 import css from './components/Style.module.css';
 
+import axios from 'axios';
+
 class App extends Component {
   state = {
     showModal: false,
+    images: [],
   };
 
+  async componentDidMount() {
+    // https://pixabay.com/api/?q=cat&page=1&key=your_key&image_type=photo&orientation=horizontal&per_page=12
+    // https://pixabay.com/api/?key=35838965-00a6ae99c457ac18fcac9dde6
+    try {
+      const myKey = '35838965-00a6ae99c457ac18fcac9dde6';
+      const url = `https://pixabay.com/api/?key=${myKey}`;
+      const response = await axios.get(url);
+      this.setState({
+        images: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.log('Final');
+    }
+  }
   toggleModal = () => {
     this.setState(({ showModal }) => ({
       showModal: !showModal,
@@ -24,8 +43,8 @@ class App extends Component {
 
     return (
       <div className={css.container}>
-        <Searchbar />
-        <ImageGallery />
+        <Searchbar onSubmit={this} />
+        <ImageGallery images={this.state.images} />
         <button type="button" onClick={this.toggleModal}>
           Open modal
         </button>

@@ -15,7 +15,8 @@
     border: none;
     outline: none;
     cursor: pointer;
-    border-radius: var(--default-bor-rad);
+    border-top-left-radius: var(--default-bor-rad);
+    border-bottom-left-radius: var(--default-bor-rad);
 
     background-color: var(--light-clr-1);
 
@@ -24,33 +25,35 @@
 
 .buttonSearch:hover,
 .buttonSearch:focus {
-    background-color: var(--light-clr-2);
+    background-color: var(--accent-clr-1);
 }
 
 .iconSearch {
-    width: 17px;
-    height: 17px;
+    width: 20px;
+    height: 18px;
 
     border: none;
     outline: none;
 
-    color: var(--dark-clr-1);
+    color: var(--dark-clr-2);
 
     transition: color var(--default-animation);
 }
 
 .buttonSearch:hover .iconSearch,
 .buttonSearch:focus .iconSearch {
-    color: var(--accent-clr-1);
+    color: var(--light-clr-1);
 }
 
 .inputSearch {
-    padding: 5px 10px;
+    padding: 6px 10px;
     min-width: 400px;
 
     font-size: 20px;
     font-weight: 100;
-    border-radius: var(--default-bor-rad);
+
+    border-top-right-radius: var(--default-bor-rad);
+    border-bottom-right-radius: var(--default-bor-rad);
 
     background-color: var(--light-clr-1);
 }
