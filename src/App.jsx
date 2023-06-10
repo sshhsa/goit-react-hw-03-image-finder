@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 
-import Searchbar from 'components/Searchbar';
+import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery';
 import Modal from 'components/Modal/Modal';
 import Loader from 'components/Loader';
 import ButtonLoadMore from 'components/Button';
 
 import css from './components/Style.module.css';
-
-// npm i notiflix
-// import Notiflix from 'notiflix';
 
 class App extends Component {
   state = {

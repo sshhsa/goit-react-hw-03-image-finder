@@ -1,0 +1,72 @@
+.searchbarHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    padding: 20px;
+    background-color: var(--accent-clr-1);
+}
+
+.buttonSearch {
+    padding: 6px;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: var(--default-bor-rad);
+
+    background-color: var(--light-clr-1);
+
+    transition: background-color var(--default-animation);
+}
+
+.buttonSearch:hover,
+.buttonSearch:focus {
+    background-color: var(--light-clr-2);
+}
+
+.iconSearch {
+    width: 17px;
+    height: 17px;
+
+    border: none;
+    outline: none;
+
+    color: var(--dark-clr-1);
+
+    transition: color var(--default-animation);
+}
+
+.buttonSearch:hover .iconSearch,
+.buttonSearch:focus .iconSearch {
+    color: var(--accent-clr-1);
+}
+
+.inputSearch {
+    padding: 5px 10px;
+    min-width: 400px;
+
+    font-size: 20px;
+    font-weight: 100;
+    border-radius: var(--default-bor-rad);
+
+    background-color: var(--light-clr-1);
+}
+
+.errorMessage {
+    position: absolute;
+    bottom: -50px;
+    right: 20px;
+
+    padding: 5px;
+    max-width: 320px;
+    text-align: center;
+
+    font-size: 20px;
+    border-radius: var(--default-bor-rad);
+
+    color: var(--light-clr-1);
+    background-color: #d84c4c;
+}

@@ -1,8 +1,9 @@
 // import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { GoSearch } from 'react-icons/go';
 
-import css from './Style.module.css';
+import css from './Searchbar.module.css';
 
 const schema = yup.object().shape({
   images: yup.string().min(4).max(20).required(),
@@ -26,6 +27,10 @@ function Searchbar() {
         onSubmit={handleSubmit}
       >
         <Form className={css.formSearch}>
+          <button type="submit" className={css.buttonSearch}>
+            <GoSearch className={css.iconSearch} />
+          </button>
+
           <Field
             className={css.inputSearch}
             name="images"
@@ -33,11 +38,11 @@ function Searchbar() {
             autoComplete="off"
             placeholder="Search images and photos"
           />
-          <ErrorMessage name="images" component="div" />
-
-          <button type="submit" className={css.buttonSearch}>
-            <span className={css.buttonLabel}>Search</span>
-          </button>
+          <ErrorMessage
+            name="images"
+            component="div"
+            className={css.errorMessage}
+          />
         </Form>
       </Formik>
     </header>
