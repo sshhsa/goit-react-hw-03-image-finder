@@ -1,22 +1,45 @@
 // import PropTypes from 'prop-types';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as yup from 'yup';
+
 import css from './Style.module.css';
 
-function Searchbar() {
-  return (
-    <header className={css.searchbar}>
-      <form className={css.form}>
-        <button type="submit" className={css.button}>
-          <span className={css.buttonLabel}>Search</span>
-        </button>
+const schema = yup.object().shape({
+  images: yup.string().min(4).max(20).required(),
+});
 
-        <input
-          className={css.input}
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-        />
-      </form>
+const initialValues = {
+  images: '',
+};
+
+function Searchbar() {
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+    resetForm();
+  };
+
+  return (
+    <header className={css.searchbarHeader}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema}
+        onSubmit={handleSubmit}
+      >
+        <Form className={css.formSearch}>
+          <Field
+            className={css.inputSearch}
+            name="images"
+            type="text"
+            autoComplete="off"
+            placeholder="Search images and photos"
+          />
+          <ErrorMessage name="images" component="div" />
+
+          <button type="submit" className={css.buttonSearch}>
+            <span className={css.buttonLabel}>Search</span>
+          </button>
+        </Form>
+      </Formik>
     </header>
   );
 }
