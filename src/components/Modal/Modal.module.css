@@ -13,16 +13,15 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    padding: 24px;
+    transform: translate(-50%, -50%);
 
-    min-height: 400px;
-    max-width: 600px;
-    width: 100%;
+    width: 80vw;
+    height: 100vh;
 
     border-radius: 2px;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
-    background-color: var(--light-clr-1);
+    background-color: var(--dark-clr-1);
 
     transform: translate(-50%, -50%);
 }
