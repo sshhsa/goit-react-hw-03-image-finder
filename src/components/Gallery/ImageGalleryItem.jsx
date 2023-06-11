@@ -1,9 +1,9 @@
-import css from './Style.module.css';
+import css from './ImageGallery.module.css';
 
 function ImageGalleryItem({ image }) {
   return (
     <li className={css.imageGalleryItem}>
-      <img src={image.webformatURL} alt={image.user} />
+      <img src={image.webformatURL} alt={image.user} width="350" height="200" />
     </li>
   );
 }
