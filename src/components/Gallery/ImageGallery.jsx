@@ -5,7 +5,11 @@ import css from './ImageGallery.module.css';
 
 class ImageGallery extends Component {
   render() {
-    const { images } = this.props;
+    const { images, query } = this.props;
+    if (query.length === 0) {
+      return null;
+    }
+
     return (
       <ul className={css.galleryList}>
         {images &&

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/Gallery/ImageGallery';
-import Modal from 'components/Modal/Modal';
 import Loader from 'components/Loader/Loader';
 import Message from 'components/Message/MessageEmpty';
 import ButtonLoadMore from 'components/Button/Button';
@@ -18,6 +17,7 @@ class App extends Component {
     isLoading: false,
     isFirstRender: true,
     page: 1,
+    query: '',
   };
 
   componentDidMount() {
@@ -49,20 +49,28 @@ class App extends Component {
       console.log(error);
     } finally {
       this.setState({ isLoading: false, isFirstRender: false });
-      console.log('Backend:', this.state.images);
+      // console.log('Backend:', this.state.images);
     }
   };
 
   onSubmit = query => {
-    this.fetchImages(query);
+    if (query.trim() === '') {
+      this.setState({
+        images: [],
+        pafe: 1,
+      });
+    } else {
+      this.setState({ query });
+      this.fetchImages(query);
+    }
   };
 
   loadMoreImages = () => {
-    const { page } = this.state;
+    const { query, page } = this.state;
     const nextPage = page + 1;
-    const query = '';
 
     this.fetchImages(query, nextPage);
+    this.setState({ page: nextPage });
   };
 
   toggleModal = () => {
@@ -72,7 +80,7 @@ class App extends Component {
   };
 
   render() {
-    const { showModal, isLoading, isFirstRender, images } = this.state;
+    const { isLoading, isFirstRender, images } = this.state;
     const hasMoreImages = images.length > 0 && images.length % 12 === 0;
 
     return (
@@ -83,15 +91,10 @@ class App extends Component {
         {!isFirstRender && this.state.images.length === 0 && (
           <Message message="Backend is empty by this request" />
         )}
-        {this.state.images && <ImageGallery images={this.state.images} />}
-
-        {showModal && (
-          <Modal onCloseModal={this.toggleModal}>
-            <button type="button" onClick={this.toggleModal}>
-              Close modal
-            </button>
-          </Modal>
+        {this.state.images && (
+          <ImageGallery images={this.state.images} query={this.state.query} />
         )}
+
         {hasMoreImages && <ButtonLoadMore onClick={this.loadMoreImages} />}
       </div>
     );
