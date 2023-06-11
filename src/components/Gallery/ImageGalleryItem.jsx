@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'components/Modal/Modal';
+import Loader from 'components/Loader/Loader';
 
 import css from './ImageGallery.module.css';
 
@@ -31,11 +32,15 @@ class ImageGalleryItem extends Component {
         </li>
         {showModal && (
           <Modal onCloseModal={this.toggleModal}>
-            <img
-              src={image.largeImageURL}
-              alt={image.user}
-              className={css.imageModal}
-            />
+            {image.largeImageURL ? (
+              <img
+                src={image.largeImageURL}
+                alt={image.user}
+                className={css.imageModal}
+              />
+            ) : (
+              <Loader />
+            )}
           </Modal>
         )}
       </>

@@ -15,10 +15,10 @@ const initialValues = {
 };
 
 function Searchbar({ onSubmit }) {
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = values => {
     console.log(values);
     onSubmit(values.images);
-    resetForm();
+    // resetForm();
   };
 
   return (
