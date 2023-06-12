@@ -15,8 +15,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 80vw;
-    height: 100vh;
+    width: 90vw;
+    height: 90vh;
 
     border-radius: 2px;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -24,4 +24,16 @@
     background-color: var(--dark-clr-1);
 
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 1100px) {
+    .modalContent {
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 1150px) {
+    .modalContent {
+        width: 1100px;
+    }
 }

@@ -6,7 +6,7 @@ import Loader from 'components/Loader/Loader';
 import Message from 'components/Message/MessageEmpty';
 import ButtonLoadMore from 'components/Button/Button';
 
-import css from './components/Style.module.css';
+import css from './components/Styles.module.css';
 
 import axios from 'axios';
 

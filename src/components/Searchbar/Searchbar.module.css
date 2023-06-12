@@ -3,20 +3,26 @@
     justify-content: center;
     align-items: center;
 
-    position: relative;
-
     padding: 20px;
     background-color: var(--accent-clr-1);
 }
 
+.formSearch {
+    display: flex;
+    justify-self: center;
+}
+
 .buttonSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 6px;
 
     border: none;
     outline: none;
     cursor: pointer;
-    border-top-left-radius: var(--default-bor-rad);
     border-bottom-left-radius: var(--default-bor-rad);
+    border-top-left-radius: var(--default-bor-rad);
 
     background-color: var(--light-clr-1);
 
@@ -30,7 +36,7 @@
 
 .iconSearch {
     width: 20px;
-    height: 18px;
+    height: 20px;
 
     border: none;
     outline: none;
@@ -46,8 +52,10 @@
 }
 
 .inputSearch {
-    padding: 6px 10px;
-    min-width: 400px;
+    position: relative;
+
+    padding: 5px 10px;
+    width: 400px;
 
     font-size: 20px;
     font-weight: 100;
@@ -58,18 +66,42 @@
     background-color: var(--light-clr-1);
 }
 
+.inputSearch::placeholder {
+    font-size: 18px;
+    color: var(--dark-clr-1);
+}
+
 .errorMessage {
     position: absolute;
-    bottom: -50px;
-    right: 20px;
+    top: 20px;
+    right: 10px;
 
     padding: 5px;
-    max-width: 320px;
+    width: 300px;
     text-align: center;
 
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 500;
     border-radius: var(--default-bor-rad);
 
-    color: var(--light-clr-1);
-    background-color: #d84c4c;
+    color: var(--dark-clr-2);
+    background-color: var(--accent-clr-2);
+}
+
+@media screen and (max-width: 980px) {
+    .inputSearch {
+        width: 300px;
+    }
+
+    .errorMessage {
+        top: 60px;
+        right: 0px;
+        left: 10px;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .inputSearch {
+        width: 100%;
+    }
 }

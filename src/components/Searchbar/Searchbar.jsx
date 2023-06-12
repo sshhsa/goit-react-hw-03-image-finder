@@ -17,7 +17,6 @@ const initialValues = {
 
 function Searchbar({ onSubmit }) {
   const handleSubmit = values => {
-    console.log(values);
     onSubmit(values.images);
   };
 

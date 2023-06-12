@@ -25,8 +25,7 @@ class ImageGalleryItem extends Component {
           <img
             src={image.webformatURL}
             alt={image.user}
-            width="350"
-            height="200"
+            className={css.imageItem}
             onClick={this.toggleModal}
           />
         </li>
