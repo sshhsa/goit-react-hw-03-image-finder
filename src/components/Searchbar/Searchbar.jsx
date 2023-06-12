@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { GoSearch } from 'react-icons/go';
 
+import PropTypes from 'prop-types';
 import css from './Searchbar.module.css';
 
 const schema = yup.object().shape({
@@ -18,7 +19,6 @@ function Searchbar({ onSubmit }) {
   const handleSubmit = values => {
     console.log(values);
     onSubmit(values.images);
-    // resetForm();
   };
 
   return (
@@ -51,5 +51,9 @@ function Searchbar({ onSubmit }) {
     </header>
   );
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Searchbar;

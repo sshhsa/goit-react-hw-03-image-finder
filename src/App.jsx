@@ -49,7 +49,6 @@ class App extends Component {
       console.log(error);
     } finally {
       this.setState({ isLoading: false, isFirstRender: false });
-      // console.log('Backend:', this.state.images);
     }
   };
 
