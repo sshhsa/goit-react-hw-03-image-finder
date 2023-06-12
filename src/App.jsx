@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-
 import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/Gallery/ImageGallery';
 import Loader from 'components/Loader/Loader';
 import Message from 'components/Message/MessageEmpty';
 import ButtonLoadMore from 'components/Button/Button';
-
+import { fetchImages } from './services/services';
 import css from './components/Styles.module.css';
-
-import axios from 'axios';
 
 class App extends Component {
   state = {
@@ -27,26 +24,15 @@ class App extends Component {
   fetchImages = async (query, page = 1) => {
     try {
       this.setState({ isLoading: true });
-
-      const myKey = '35838965-00a6ae99c457ac18fcac9dde6';
-      const url = `https://pixabay.com/api/?key=${myKey}&q=${query}&image_type=photo&orientation=horizontal&per_page=12&page=${page}`;
-      const response = await axios.get(url);
-
-      if (response.data.hits.length === 0) {
-        throw new Error('Backend is empty by this request');
-      }
+      const images = await fetchImages(query, page);
 
       if (page === 1) {
-        this.setState({
-          images: response.data.hits,
-        });
+        this.setState({ images });
       } else {
         this.setState(prevState => ({
-          images: [...prevState.images, ...response.data.hits],
+          images: [...prevState.images, ...images],
         }));
       }
-    } catch (error) {
-      console.log(error);
     } finally {
       this.setState({ isLoading: false, isFirstRender: false });
     }
@@ -56,7 +42,7 @@ class App extends Component {
     if (query.trim() === '') {
       this.setState({
         images: [],
-        pafe: 1,
+        page: 1,
       });
     } else {
       this.setState({ query });
@@ -87,13 +73,10 @@ class App extends Component {
         {isLoading && <Loader />}
         <Searchbar onSubmit={this.onSubmit} />
 
-        {!isFirstRender && this.state.images.length === 0 && (
+        {!isFirstRender && images.length === 0 && (
           <Message message="Backend is empty by this request" />
         )}
-        {this.state.images && (
-          <ImageGallery images={this.state.images} query={this.state.query} />
-        )}
-
+        {images && <ImageGallery images={images} query={this.state.query} />}
         {hasMoreImages && <ButtonLoadMore onClick={this.loadMoreImages} />}
       </div>
     );
