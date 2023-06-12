@@ -16,6 +16,18 @@
     max-width: 1200px;
 }
 
+.imageGalleryItem {
+    cursor: pointer;
+
+    transform: scale(1);
+    transition: var(--default-animation);
+}
+
+.imageGalleryItem:hover,
+.imageGalleryItem:focus {
+    transform: scale(1.05);
+}
+
 .imageItem {
     width: 350px;
     height: 200px;
